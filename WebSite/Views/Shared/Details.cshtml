@@ -1,0 +1,193 @@
+﻿@model WebSite.Models.Post
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div id="content">
+    <div class="PostTitle">@Model.Title</div>
+    <div id="mainContent">
+        <section>
+            <article class="blogPost">
+                <header>
+                    <div>Posted on @Model.PublishDate.ToString("dd MM yyyy") by @Model.Writer     <a href="#comments">@Model.Comments.Count Reviews</a></div>
+                    <form metod="get" action="@Model.WebSite"><button id="visitWebsite" type="submit">Visit Website</button></form>
+                    <br />
+                </header>
+                            
+                <div>
+                    @Model.Content
+                    <h2>Cuisine</h2>
+                    <div>@Model.Cuisine</div>
+                    <h2>Meals</h2>
+                    <div>@Model.Meals</div>
+                    <h2>Restaurant Features</h2>
+                    <div>@Model.RFeatures</div>
+                    <h2>Location and Contact Information</h2>
+                    <div><b>Address:</b> @Model.Address</div>
+                    <div><b>Phone Number:</b> @Model.PhoneNumber</div>
+
+                    <h2>Business hours</h2>
+                    <table id="business-hours-table">
+                        <tr>
+                            <td><b>Sunday</b></td>
+                            <td>
+                                @if (Model.SundayOpening != null && Model.SundayClosing != null)
+                                {
+                                    <div>@Model.SundayOpening-@Model.SundayClosing</div>
+                                }
+                                else
+                                {
+                                    <div style="color:red">Closed</div>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Monday</b></td>
+                            <td>
+                                @if (Model.MondayOpening != null && Model.MondayClosing != null)
+                                {
+                                    <div>@Model.MondayOpening-@Model.MondayClosing</div>
+                                }
+                                else
+                                {
+                                    <div style="color:red">Closed</div>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Tuesday</b></td>
+                            <td>
+
+                                @if (Model.TuesdayOpening != null && Model.TuesdayClosing != null)
+                                {
+                                    <div>@Model.TuesdayOpening-@Model.TuesdayClosing</div>
+                                }
+                                else
+                                {
+                                    <div style="color:red">Closed</div>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Wednesday</b></td>
+                            <td>
+                                @if (Model.WednesdayOpening != null && Model.WednesdayClosing != null)
+                                {
+                                    <div>@Model.WednesdayOpening-@Model.WednesdayClosing</div>
+                                }
+                                else
+                                {
+                                    <div style="color:red">Closed</div>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Thursday</b></td>
+                            <td>
+
+                                @if (Model.ThursdayOpening != null && Model.ThursdayClosing != null)
+                                {
+                                    <div>@Model.ThursdayOpening-@Model.ThursdayClosing</div>
+                                }
+                                else
+                                {
+                                    <div style="color:red">Closed</div>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Friday</b></td>
+                            <td>
+                                @if (Model.FridayOpening != null && Model.FridayClosing != null)
+                                {
+                                    <div>@Model.FridayOpening-@Model.FridayClosing</div>
+                                }
+                                else
+                                {
+                                    <div style="color:red">Closed</div>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Saturday</b></td>
+                            <td>
+                                @if (Model.SaturdayOpening != null && Model.SaturdayClosing != null)
+                                {
+                                    <div>@Model.SaturdayOpening-@Model.SaturdayClosing</div>
+                                }
+                                else
+                                {
+                                    <div style="color:red">Closed</div>
+                                }
+                            </td>
+                        </tr>
+                    </table>
+
+                            @if (Model.Image != null)
+                            {
+                                <img src="@Model.Image" width="500" height="300" />
+                            }
+                            @if (Model.Video != null)
+                            {
+                                <video controls="controls">
+                                    <source src="@Model.Video" type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            }
+
+
+                        </div>
+
+</article>
+        </section>
+        </div>
+    </div>
+
+<p>
+    @Html.ActionLink("Back to Posts", "Index")
+</p>
+
+
+<section id="comments">
+    <h2>Reviews</h2>
+
+    @foreach (var item in Model.Comments)
+    {
+    <article>
+        <header>
+            <a href="@item.WebSite">@item.Writer</a> 
+        </header>
+        <p>@item.Content</p>
+        @Html.ActionLink("Delete", "/DeleteComment", item)
+    </article>
+    }
+
+
+</section>
+<form action="/Blog/AddComment" method="post" id="commentForm">
+    <h2>Post a Review</h2>
+    <p>
+        <label for="Title">Title</label>
+        <input name="Title" id="Title" type="text" required />
+    </p>
+    <p>
+        <label for="Writer">Writer</label>
+        <input name="Writer" id="Writer" type="text" />
+    </p>
+    <p>
+        <label for="WebSite">WebSite</label>
+        <input name="WebSite" id="WebSite" type="url" />
+    </p>
+    <p>
+        <label for="Content">Content</label>
+        <textarea name="Content" id="Content" required></textarea>
+    </p>
+    <p>
+        <input name="postid" value="@Model.ID" type="hidden"/>
+    </p>
+    <p><input type="submit" value="Post comment" /></p>
+    <input type="number" hidden id="RelatedPost" name="RelatedPost" value="@Model.ID"/>
+</form>
+

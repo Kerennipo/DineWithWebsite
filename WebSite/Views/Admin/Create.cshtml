@@ -1,0 +1,174 @@
+﻿@model WebSite.Models.Post
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Add New Restaurant</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="general-form">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Writer, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Writer, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Writer, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.WebSite, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WebSite, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.WebSite, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Cuisine, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Cuisine, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Cuisine, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Meals, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Meals, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Meals, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RFeatures, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.RFeatures, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.RFeatures, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.CheckBox("ImageCheckBox", false, new { @id = "image-check-box" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control hide", @id = "image-text-box" } })
+                    @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Video, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.CheckBox("VideoCheckBox", false, new { @id = "video-check-box" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Video, new { htmlAttributes = new { @class = "form-control hide", @id = "video-text-box" } })
+                    @Html.ValidationMessageFor(model => model.Video, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <!--Opening Hours-->
+        <div class="form-group">
+            <h2>Set your Business Hours:</h2>
+            <div class="col-md-10">
+                <table id="day" name="day">
+                    <tr>
+                        <td><label id="sunday">Sunday</label></td>
+                        <td> <input type="checkbox" id="sunday-check-box" name="closed" value="closed" /></td>
+                        <td class="hide" id="sunday-opening"><label for="SundayOpening">Opening time: </label><input type="time" name="SundayOpening" id="SundayOpening"></td>
+                        <td class="hide" id="sunday-closing"><label for="SundayClosing">Closing time: </label><input type="time" name="SundayClosing" id="SundayClosing"></td>
+                    </tr>
+                    <tr>
+                        <td><label id="monday">Monday</label></td>
+                        <td> <input type="checkbox" id="monday-check-box" name="closed" value="closed" /></td>
+                        <td class="hide" id="monday-opening"><label for="MondayOpening">Opening time: </label><input type="time" name="MondayOpening" id="MondayOpening"></td>
+                        <td class="hide" id="monday-closing"><label for="MondayClosing">Closing time: </label><input type="time" name="MondayClosing" id="MondayClosing"></td>
+                    </tr>
+                    <tr>
+                        <td><label id="tuesday">Tuesday</label></td>
+                        <td> <input type="checkbox" id="tuesday-check-box" name="closed" value="closed" /></td>
+                        <td class="hide" id="tuesday-opening"><label for="TuesdayOpening">Opening time: </label><input type="time" name="TuesdayOpening" id="TuesdayOpening"></td>
+                        <td class="hide" id="tuesday-closing"><label for="TuesdayClosing">Closing time: </label><input type="time" name="TuesdayClosing" id="TuesdayClosing"></td>
+                    </tr>
+                    <tr>
+                        <td><label id="wednesday">Wednesday</label></td>
+                        <td> <input type="checkbox" id="wednesday-check-box" name="closed" value="closed" /></td>
+                        <td class="hide" id="wednesday-opening"><label for="WednesdayOpening">Opening time: </label><input type="time" name="WednesdayOpening" id="WednesdayOpening"></td>
+                        <td class="hide" id="wednesday-closing"><label for="WednesdayClosing">Closing time: </label><input type="time" name="WednesdayClosing" id="WednesdayClosing"></td>
+                    </tr>
+                    <tr>
+                        <td><label id="thursday">Thursday</label></td>
+                        <td> <input type="checkbox" id="thursday-check-box" name="closed" value="closed" /></td>
+                        <td class="hide" id="thursday-opening"><label for="ThursdayOpening">Opening time: </label><input type="time" name="ThursdayOpening" id="ThursdayOpening"></td>
+                        <td class="hide" id="thursday-closing"><label for="ThursdayClosing">Closing time: </label><input type="time" name="ThursdayClosing" id="ThursdayClosing"></td>
+                    </tr>
+                    <tr>
+                        <td><label id="friday">Friday</label></td>
+                        <td> <input type="checkbox" id="friday-check-box" name="closed" value="closed" /></td>
+                        <td class="hide" id="friday-opening"><label for="FridayOpening">Opening time: </label><input type="time" name="FridayOpening" id="FridayOpening"></td>
+                        <td class="hide" id="friday-closing"><label for="FridayClosing">Closing time: </label><input type="time" name="FridayClosing" id="FridayClosing"></td>
+                    </tr>
+                    <tr>
+                        <td><label id="saturday">Saturday</label></td>
+                        <td> <input type="checkbox" id="saturday-check-box" name="closed" value="closed" /></td>
+                        <td class="hide" id="saturday-opening"><label for="SaturdayOpening">Opening time:  </label><input type="time" name="SaturdayOpening" id="SaturdayOpening"></td>
+                        <td class="hide" id="saturday-closing"><label for="SaturdayClosing">Closing time:  </label><input type="time" name="SaturdayClosing" id="SaturdayClosing"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+
+
