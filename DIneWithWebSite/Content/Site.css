@@ -1,0 +1,585 @@
+﻿/*Keren Nipomnyashih 311301352*/
+/*Yuliya Kolk 321170474*/
+
+/*------------------------------
+=BASIC SETUP
+------------------------------*/
+
+
+/* Makeshift CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Tell the browser to render HTML 5 elements as block */
+header, footer, section, aside, nav, article {
+    display: block;
+}
+
+/*Adding Font*/
+@font-face {
+    font-family: myFirstFont;
+    src: url(../Fonts/calibril.TTF);
+}
+
+@font-face {
+    font-family: SiteTitle;
+    src: url(../Fonts/destain.TTF);
+}
+
+body {
+    margin: 0 auto;
+    padding: 22px 70px;
+    width: auto;
+    /*width: 940px;*/
+    /*font: 13px/22px Helvetica, Arial, sans-serif;*/
+    font-family: myFirstFont;
+    background: #F0F0F0;
+}
+
+h1, h2 {
+    font-size: 28px;
+    line-height: 44px;
+    font-family: SiteTitle;
+    /*padding: 22px 0;*/
+}
+
+.PostTitle {
+    font-size: 45px;
+    font-family: SiteTitle;
+    text-shadow: 3px 3px #DDDDDD;
+    padding-left: 55px;
+}
+
+/*Adding Shadow to the Title*/
+.BlogTitle {
+    text-shadow: 3px 3px #DDDDDD;
+    font-size: 80px;
+    text-align: center;
+    padding-bottom: 22px;
+    font-family: SiteTitle;
+    color: black;
+}
+
+#titleImage {
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 11px 0;
+}
+
+
+p {
+    padding-bottom: 22px;
+}
+
+
+
+/*------------------------------
+=NAVIGATION
+------------------------------*/
+
+nav {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: url("../images/nav_background.png");
+}
+
+    nav ul {
+        margin: 0 auto;
+        width: 940px;
+        list-style: none;
+    }
+
+        nav ul li {
+            float: left;
+        }
+
+            nav ul li a {
+                display: block;
+                margin-right: 20px;
+                width: 140px;
+                font-size: 14px;
+                line-height: 44px;
+                text-align: center;
+                text-decoration: none;
+                color: #777;
+            }
+
+
+                nav ul li a:hover {
+                    color: #fff;
+                }
+
+
+.selected {
+    color: #fff;
+}
+
+
+
+
+
+
+nav ul li.subscribe a {
+    margin-left: 22px;
+    padding-left: 33px;
+    text-align: left;
+    background: url("../images/rss.png") left center no-repeat;
+}
+
+#transDemo2 {
+    margin-top: 6px;
+}
+
+    #transDemo2 div {
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        -webkit-transition: all 2s ease-in-out;
+        -moz-transition: all 2s ease-in-out;
+        -ms-transition: all 2s ease-in-out;
+        transition: all 2s ease-in-out;
+    }
+
+        #transDemo2 div:hover, #transDemo2 div.hover_effect {
+            -webkit-transform: rotate(720deg) scale(2,2);
+            -moz-transform: rotate(720deg) scale(2,2);
+            -ms-transform: rotate(720deg) scale(2,2);
+            transform: rotate(720deg) scale(2,2);
+        }
+
+
+
+/*------------------------------
+=INTRODUCTION
+------------------------------*/
+
+#intro {
+    position: relative;
+    margin-top: 66px;
+    padding: 44px;
+    /*background: #467612 url("images/intro_background.png") repeat-x;*/
+    background: #414345; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#414345,#232526); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#414345,#232526); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#414345,#232526); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#414345,#232526); /* Standard syntax (must be last) */
+    /* Background-size not implemented yet */
+    -webkit-background-size: 100%;
+    -o-background-size: 100%;
+    -khtml-background-size: 100%;
+    /* Border-radius not implemented yet */
+    -moz-border-radius: 22px;
+    -webkit-border-radius: 22px;
+}
+
+    #intro h2, #intro p {
+        position: relative;
+        z-index: 9999;
+        width: 436px;
+    }
+
+    #intro h2 {
+        font-weight: normal;
+        color: #fff;
+    }
+
+    #intro p {
+        padding: 0;
+        color: #fff;
+    }
+
+    #intro img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 653px;
+        height: 100%;
+        /* Border-radius not implemented yet */
+        -moz-border-radius: 22px;
+        -webkit-border-radius: 22px;
+    }
+
+/*------------------------------
+=SEARCH FORM
+------------------------------*/
+
+
+#PostsSearch {
+    text-align: center;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    font-family: Calibri;
+}
+
+#searchForm {
+    display: flex;
+    flex-direction: row;
+}
+
+    #searchForm input[type=text], #searchForm input[type=date], #searchForm input[type=email] {
+        padding: 6px 8px;
+        border-radius: 10px;
+        height: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        color: #808080;
+        margin-right: 10px;
+        width: 50%;
+        display: block;
+        font-size: 12px;
+        font-family: Calibri;
+        height: 100%;
+    }
+
+#rangeOutput {
+    width: 70px;
+}
+
+#searchForm input[type=submit] {
+    background-color: #808080;
+    color: #fff;
+    padding: 6px 24px;
+    border: none;
+    display: block-inline;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: Calibri;
+    margin-left: 16px;
+    height: 100%;
+}
+
+    #searchForm input[type=submit]:hover {
+        background-color: #C0C0C0;
+    }
+/*------------------------------
+=audio
+------------------------------*/
+#audio {
+    align-self: center;
+    margin: auto;
+    text-align: center;
+    display: block;
+}
+
+/*------------------------------
+=CONTENT AREA AND SIDEBAR LAYOUT
+------------------------------*/
+
+#content {
+    display: table;
+    /*table-layout: fixed;*/
+    width: 100%;
+    min-height: 600px;
+    height: 100%;
+    margin-bottom: 30px;
+    padding-top: 25px;
+}
+
+#mainContent {
+    /*display: table-cell;*/
+    width: 70%;
+    padding-top: 0px;
+    padding-left: 60px;
+    float: left;
+    /*padding-bottom:60px;*/
+    height: 100%;
+}
+
+aside {
+    /*display: table-cell;*/
+    width: 20%;
+    height: 100%;
+    float: right;
+    background: #c7c7c7;
+    border-radius: 15px;
+    /*display:inline-block;*/
+    /*background: url("images/sidebar_background.png") top left;*/
+}
+
+
+    /*------------------------------
+=SIDEBAR
+------------------------------*/
+    aside section {
+        margin: 20px;
+        padding: 10px;
+        background: #c7c7c7;
+        /*background: url("images/sidebar_section_background.png") repeat-x;*/
+        /*background: #F0F0F0; /* For browsers that do not support gradients 
+        background: -webkit-linear-gradient(#F0F0F0); /* For Safari 5.1 to 6.0 
+        background: -o-linear-gradient(#F0F0F0); /* For Opera 11.1 to 12.0 
+        background: -moz-linear-gradient(#F0F0F0); /* For Firefox 3.6 to 15 
+        background: linear-gradient(#F0F0F0); /* Standard syntax (must be last) */
+        /* Border-radius not implemented yet */
+        -moz-border-radius: 11px;
+        -webkit-border-radius: 11px;
+        /*border: 1px solid;*/
+    }
+
+        aside section ul {
+            margin: 0 0 0 22px;
+            list-style: none;
+        }
+
+            aside section ul li a {
+                display: block;
+                text-decoration: none;
+                color: #000;
+            }
+
+                aside section ul li a:hover {
+                    text-decoration: underline;
+                }
+
+/*------------------------------
+=BLOG POST
+------------------------------*/
+.blogPost header p, .blogPost header p a {
+    font-size: 14px;
+    font-style: italic;
+    color: #777;
+}
+
+    .blogPost header p a:hover {
+        text-decoration: none;
+        color: #000;
+    }
+
+.blogPost div {
+    /* Column-count not implemented yet */
+    -moz-column-count: 2;
+    /*-webkit-column-count: 2;*/
+    /* Column-gap not implemented yet */
+    -moz-column-gap: 22px;
+    /*-webkit-column-gap: 22px;*/
+}
+
+.blogPost img {
+    margin: 22px 0;
+    -webkit-box-shadow: 3px 3px 7px #777;
+}
+
+.blogPost video {
+    margin: 12px 0;
+    width: 100%;
+    height: auto;
+    -webkit-box-shadow: 3px 3px 7px #777;
+}
+
+
+
+/*------------------------------
+=COMMENTS
+------------------------------*/
+
+#comments {
+    margin-top: 21px;
+    padding-top: 22px;
+    border-top: 1px solid #d7d7d7;
+}
+
+    #comments article {
+        display: table;
+        padding: 22px;
+    }
+
+        #comments article:nth-child(odd) {
+            padding: 21px;
+            background: #E3E3E3;
+            border: 1px solid #d7d7d7;
+            -moz-border-radius: 11px;
+            -webkit-border-radius: 11px;
+        }
+
+        #comments article header {
+            display: table-cell;
+            width: 220px;
+            padding-right: 22px;
+        }
+
+            #comments article header a {
+                display: block;
+                font-weight: bold;
+                color: #000;
+            }
+
+                #comments article header a:hover {
+                    text-decoration: none;
+                }
+
+        #comments article p {
+            padding: 0;
+        }
+
+
+
+
+
+/*------------------------------
+=COMMENT FORM
+------------------------------*/
+#commentForm {
+    margin-top: 21px;
+    padding-top: 22px;
+    border-top: 1px solid #d7d7d7;
+}
+
+    #commentForm p {
+        display: table;
+        margin-bottom: 22px;
+        padding: 0 22px;
+    }
+
+    #commentForm label {
+        display: table-cell;
+        width: 140px;
+        padding-right: 20px;
+        text-align: right;
+        font-weight: bold;
+        vertical-align: top;
+    }
+
+    #commentForm input[type="text"], #commentForm input[type="email"], #commentForm input[type="url"] {
+        display: table-cell;
+        width: 300px;
+        height: 20px;
+        border: 1px solid #d7d7d7;
+    }
+
+    #commentForm textarea {
+        width: 300px;
+        height: 100px;
+        border: 1px solid #d7d7d7;
+    }
+
+    #commentForm input[type="submit"] {
+        margin-left: 162px;
+    }
+
+
+
+/*------------------------------
+=FOOTER
+------------------------------*/
+footer {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: #222;
+}
+
+    footer div {
+        display: table;
+        margin: 0 auto;
+        padding: 44px 0;
+        width: 940px;
+        color: #777;
+    }
+
+        footer div section {
+            display: table-cell;
+            width: 300px;
+        }
+
+        footer div #about, footer div #blogroll {
+            padding-right: 20px;
+        }
+
+    footer h3 {
+        color: #FFF;
+    }
+
+    footer a {
+        color: #999;
+    }
+
+        footer a:hover {
+            color: #FFF;
+            text-decoration: none;
+        }
+
+    footer ul {
+        margin: 0 0 0 40px;
+        list-style: square;
+        color: #565656;
+    }
+
+        footer ul li a {
+            display: block;
+        }
+
+/*------------------------------
+=FAN
+------------------------------*/
+
+/*Create*/
+label.control-label.col-md-2 {
+    text-align: left;
+}
+
+.col-md-10 {
+    width: 70%;
+}
+
+/*Delete*/
+.dl-horizontal dt {
+    text-align: left;
+}
+
+
+
+/*Image and Video checkbox*/
+.hide {
+    visibility: hidden;
+}
+
+#image-check-box, #video-check-box {
+    float: left;
+    margin-left: 15px;
+}
+
+#image-text-box, #video-text-box {
+    width: 92%;
+}
+
+.white {
+    color: #fff;
+}
+
+
+/*Visit website button*/
+#visitWebsite {
+    padding-bottom: 0px;
+}
+
+/*Website Link intro*/
+
+#websitelink {
+    color: white;
+    font-style: italic;
+}
+
+/*Opening Hours*/
+td {
+    padding: 5px;
+}
+
+#sunday, #monday, #tuesday, #wednesday, #thursday, #friday, #saturday {
+    color: red;
+}
+
+#business-hours-table {
+    width: 70%;
+}
+
+.general-form {
+    width: 70%;
+}

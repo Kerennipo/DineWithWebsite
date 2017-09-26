@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DineWith</title>
+    @*<link rel="stylesheet" href="~/css/style.css" type="text/css" media="screen" />*@
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/hide-text-area.js")
+    @Scripts.Render("~/Scripts/navigation-change-color.js")
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <header>
+        @Html.Partial("_LoginPartial")  
+
+
+        <h1 class="BlogTitle">DineWith <img id="titleImage" src="http://www.servedfromscratch.com/wp-content/uploads/2015/04/spoon-and-fork-png-fork-spoon-knife.png" width="60" height="60"></h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul class="navigation">
+            <li><a href="/Blog">Restaurants</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="/Fans">Fan Club</a></li>
+            <li><a href="#">Contact</a></li>
+            <li class="subscribe">
+                <div id="transDemo2">
+                    <div class="hover">
+                        <img src=http://www.ashlylorenzana.com/wp-content/uploads/2013/12/12065637851779660844SRD_RSS_Logo.svg_.hi_.png width="30" height="30">
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+
+
+
+    <section id="intro">
+        <!-- Introduction -->
+
+        <header>
+            <h2>Restaurant of the Week</h2>
+        </header>
+        <!--Should be automated, is not implemented yet-->
+        <p>Shila is the winning restaurant for this week!</p>
+        <a id="websitelink" href="/Blog/Details/1">Check it Yourself!</a>
+        <img src="~/images/food.png" alt="Shauli" />
+    </section>
+
+    <!--PlayBack-->
+    <audio id="audio" controls autoplay loop>
+        <source src="~/music/music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!--Search for specific posts-->
+    <section id="PostsSearch" class="PostsSearch">
+        <h1>Search for a Restaurant</h1>
+        <form action="/Blog/SearchForRestaurant" id="searchForm">
+            <input type="text" id="restaurant-name" name="restaurantName" placeholder="Restaurant Name">
+            <input type="text" id="cuisine" name="cuisine" placeholder="Cuisine">
+            <input type="text" id="meal" name="meal" placeholder="Meal">
+            <input type="text" id="author-name" name="authorName" placeholder="Author Name">
+            <input name="numReviews" id="num-of-reviews" type="text" placeholder="Minimum number of reviews">
+            <input type="submit" value="Search">
+        </form>
+    </section>
+
+    <!--content-->
+    <div id="content">
+        <div id="mainContent">
+            <article class="blogPost">
+                @RenderBody()
+            </article>
+        </div>
+        <aside>
+            <section>
+                <header>
+                    <h3>Categories</h3>
+                </header>
+                <ul>
+                    <li><a href="#">Lorem ipsum dolor</a></li>
+                    <li><a href="#">Sit amet consectetur</a></li>
+                    <li><a href="#">Adipisicing elit sed</a></li>
+                </ul>
+            </section>
+            <section>
+                <header>
+                    <h3>Archives</h3>
+                </header>
+                <ul>
+                    <li><a href="#">December 2008</a></li>
+                    <li><a href="#">January 2009</a></li>
+                    <li><a href="#">February 2009</a></li>
+                    <li><a href="#">March 2009</a></li>
+                </ul>
+            </section>
+        </aside>
+    </div>
+
+
+    <footer>
+        <!-- Footer -->
+        <div>
+            <section id="about">
+                <header>
+                    <h3>About</h3>
+                </header>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut la</p>
+            </section>
+            <section id="blogroll">
+                <header>
+                    <h3>Blogroll</h3>
+                </header>
+                <ul>
+                    <li><a href="#">NETTUTS+</a></li>
+                    <li><a href="#">FreelanceSwitch</a></li>
+                </ul>
+            </section>
+            <section id="popular">
+                <header>
+                    <h3>Popular</h3>
+                </header>
+                <ul>
+                    <li><a href="#">This is the title of a blog post</a></li>
+                    <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+                    <li><a href="#">Consectetur adipisicing elit, sed do eiusmod</a></li>
+                </ul>
+            </section>
+        </div>
+    </footer>
+</body>
+        @RenderSection("scripts", required: false)
+
+</html>
