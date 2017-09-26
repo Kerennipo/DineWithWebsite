@@ -25,7 +25,7 @@
                     <h2>Restaurant Features</h2>
                     <div>@Model.RFeatures</div>
                     <h2>Location and Contact Information</h2>
-                    <div><b>Address:</b> @Model.Address</div>
+                    <div><b>Address:</b> @Model.Address  <a href="http://www.google.com/maps/place/@Model.Latitude,@Model.Longitude" target="_blank"><img id="location-image" src="~/images/location.png" width="20" height="20" style="box-shadow:none"/></a></div>
                     <div><b>Phone Number:</b> @Model.PhoneNumber</div>
 
                     <h2>Business hours</h2>

@@ -202,6 +202,10 @@
     <Compile Include="Migrations\201709261227233_InitialCreate.Designer.cs">
       <DependentUpon>201709261227233_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709261618476_addlocation.cs" />
+    <Compile Include="Migrations\201709261618476_addlocation.Designer.cs">
+      <DependentUpon>201709261618476_addlocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BlogDBContext.cs" />
@@ -314,6 +318,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201709261227233_InitialCreate.resx">
       <DependentUpon>201709261227233_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709261618476_addlocation.resx">
+      <DependentUpon>201709261618476_addlocation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

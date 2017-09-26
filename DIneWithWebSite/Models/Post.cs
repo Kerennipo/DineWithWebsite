@@ -38,7 +38,9 @@ namespace WebSite.Models
         public string SaturdayOpening { get; set; }
         public string SaturdayClosing { get; set; }
 
-
+        //Location variables
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
     }
 }
