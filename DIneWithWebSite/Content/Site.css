@@ -362,7 +362,7 @@ aside {
     /*-webkit-column-gap: 22px;*/
 }
 
-.blogPost img {
+#post-image {
     margin: 22px 0;
     -webkit-box-shadow: 3px 3px 7px #777;
 }
@@ -590,4 +590,5 @@ td {
 #map {
     height: 400px;
     width: 100%;
+    box-shadow:none;
 }

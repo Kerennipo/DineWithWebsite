@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Google Maps APIs</h2>
+<h2>About Us</h2>
 
 
 <html>
@@ -12,7 +12,21 @@
 
 <body>
 
-
+    <div id="about-content" style="width:80%">
+        <p>
+            DineWith is an Israeli website that will help any entrepreneur who is truly serious about improving their restaurant.
+            Each restaurant page has its own raiting - once a week the restaurant with the winning raiting is advertised at the top of the website under the navigation menu.
+        </p>
+        <p>
+            Our website is updated with new articles frequently. The videos are also another major plus of this website.
+            We beleive that the diners reviews are a major part in advertising the restaurant.
+            The website includes statistics, google maps, interactions with facebook etc.
+        </p>
+        <p>
+            Tourists and citizens use our website to choose their next meal!
+            <a href="/Contact">Come and be a part of our Family! </a>
+        </p>
+</div>
     <div id="map"></div>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7P5GhSt_iI4Af11T2cb7D4tjoeDlEEVs&callback=initMap">
@@ -23,7 +37,9 @@
             var number = 0;
             var locations = [];
             @foreach (var item in Model){
+                if (@item.Latitude != null && item.Longitude != null) {
                 @:locations.push(['@item.Title',@item.Latitude,@item.Longitude]);
+                 }
             }
 
 
@@ -40,6 +56,8 @@
             for (i = 0; i < locations.length; i++) {
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    animation: google.maps.Animation.BOUNCE,
+                    icon: "../images/cook.png" ,
                     map: map
                 });
 
