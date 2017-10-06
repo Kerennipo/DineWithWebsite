@@ -583,3 +583,11 @@ td {
 .general-form {
     width: 70%;
 }
+
+
+/*Map*/
+
+#map {
+    height: 400px;
+    width: 100%;
+}

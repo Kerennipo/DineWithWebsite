@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WebSite.Models.Post>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Google Maps APIs</h2>
+
+
+<html>
+
+
+<body>
+
+
+    <div id="map"></div>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7P5GhSt_iI4Af11T2cb7D4tjoeDlEEVs&callback=initMap">
+    </script>
+
+    <script>
+        function initMap() {
+            var number = 0;
+            var locations = [];
+            @foreach (var item in Model){
+                @:locations.push(['@item.Title',@item.Latitude,@item.Longitude]);
+            }
+
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: new google.maps.LatLng(32.085300, 34.781768),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+
+            var infowindow = new google.maps.InfoWindow();
+
+            var marker, i;
+
+            for (i = 0; i < locations.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    map: map
+                });
+
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
+                        infowindow.setContent(locations[i][0]);
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+            }
+        }
+    </script>
+
+
+
+
+    
+
+</body>
+
+</html>
