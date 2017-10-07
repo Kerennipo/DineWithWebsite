@@ -152,6 +152,97 @@
         </div>
     </div>
 
+<!--Rating-->
+@{
+    var url = Request.Url.AbsolutePath;
+}
+@if (!User.Identity.IsAuthenticated)
+{
+    <text>Please <a href="/Account/Login?ReturnUrl=@Request.Url.AbsolutePath" title="Login to rate">Login</a> to rate</text>
+    return;
+}
+else
+{
+    <div id="ratingDiv" class="smallText">
+        Poor
+        <img src="/images/whitestar.gif" alt="" class="ratingStar" data-value="1" /><img src="/images/whitestar.gif" alt="" class="ratingStar" data-value="2" /><img src="/images/whitestar.gif" alt="" class="ratingStar" data-value="3" /><img src="/images/whitestar.gif" alt="" class="ratingStar" data-value="4" /><img src="/images/whitestar.gif" alt="" class="ratingStar" data-value="5" /> Excellent
+        <label id="lblResult"></label>
+    </div>
+    <style type="text/css">
+        .ratingStar {
+            cursor: pointer;
+        }
+    </style>
+    <script type="text/javascript">
+        var clickedFlag = false;
+        $(".ratingStar").mouseover(function () {
+            $(this).attr("src", "/images/yellowstar.gif").prevAll("img.ratingStar").attr("src", "/images/yellowstar.gif");
+        });
+        $(".ratingStar, #radingDiv").mouseout(function () {
+            $(this).attr("src", "/images/whitestar.gif");
+        });
+        $("#ratingDiv").mouseout(function () {
+            if (!clickedFlag)
+            {
+                $(".ratingStar").attr("src", "/images/whitestar.gif");
+            }
+        });
+        $(".ratingStar").click(function () {
+            clickedFlag = true;
+            $(".ratingStar").unbind("mouseout mouseover click").css("cursor", "default");
+
+            var url = "/Blog/SendRating?r=" + $(this).attr("data-value") + "&s=5&id=@Model.ID&url=@url";
+            $.post(url, null, function (data) {
+                $("#lblResult").html(data);
+            });
+        });
+        $("#lblResult").ajaxStart(function () {
+            $("#lblResult").html("Processing ....");
+        });
+        $("#lblResult").ajaxError(function () {
+            $("#lblResult").html("<br />Error occured.");
+        });
+    </script>
+}
+
+
+@{
+    Single m_Average = 0;
+
+    Single m_totalNumberOfVotes = 0;
+    Single m_totalVoteCount = 0;
+    Single m_currentVotesCount = 0;
+    Single m_inPercent = 0;
+    var thisVote = string.Empty;
+
+    if (Model.Votes!=null)
+    {
+        // calculate total votes now
+        string[] votes = Model.Votes.Split(',');
+        for (int i = 0; i < votes.Length; i++)
+        {
+            m_currentVotesCount = int.Parse(votes[i]);
+            m_totalNumberOfVotes = m_totalNumberOfVotes + m_currentVotesCount;
+            m_totalVoteCount = m_totalVoteCount + (m_currentVotesCount * (i + 1));
+        }
+
+        m_Average = m_totalVoteCount / m_totalNumberOfVotes;
+        m_inPercent = (m_Average * 100) / 5;
+
+        thisVote = "<span style=\"display: block; width: 65px; height: 13px; background: url(/images/starRating.png) 0 0;\">" +
+            "<span style=\"display: block; width: " + m_inPercent + "%; height: 13px; background: url(/images/starRating.png) 0 -13px;\"></span> " +
+            "</span>" +
+            "<span class=\"smallText\">Overall ratings: <span itemprop=\"ratingCount\">" + m_totalNumberOfVotes + "</span> | Rating: <span itemprop=\"ratingValue\">" + m_Average.ToString("##.##") + "</span> out of 5 </span>  ";
+    }
+}
+<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+    <meta itemprop="bestRating" content="5" />
+    <meta itemprop="worstRating" content="1">
+    <meta itemprop="ratingValue" content="@m_Average.ToString("##.##") %>" />
+    @Html.Raw(thisVote)
+</div>
+
+
 <p>
     @Html.ActionLink("Back to Posts", "Index")
 </p>

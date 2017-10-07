@@ -241,3 +241,8 @@ C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\obj\Debug\DIneWithWebSite.cs
 C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\obj\Debug\DIneWithWebSite.dll
 C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\obj\Debug\DIneWithWebSite.pdb
 C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\obj\Debug\DIneWithWebSite.Migrations.addlocation.resources
+C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\obj\Debug\DIneWithWebSite.Migrations.addrating.resources
+C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\obj\Debug\DIneWithWebSite.Migrations.addvotes2.resources
+C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\obj\Debug\DIneWithWebSite.Migrations.adddbforvotes.resources
+C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\obj\Debug\DIneWithWebSite.Migrations.votes.resources
+C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\obj\Debug\DIneWithWebSite.Migrations.deletecollection.resources

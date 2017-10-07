@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DIneWithWebSite.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
@@ -41,6 +42,10 @@ namespace WebSite.Models
         //Location variables
         public string Latitude { get; set; }
         public string Longitude { get; set; }
+
+        //Ratings
+        public string Votes { get; set; }
+
         public virtual ICollection<Comment> Comments { get; set; }
     }
 }

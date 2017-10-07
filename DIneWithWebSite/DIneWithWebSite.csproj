@@ -206,6 +206,26 @@
     <Compile Include="Migrations\201709261618476_addlocation.Designer.cs">
       <DependentUpon>201709261618476_addlocation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710071241011_addrating.cs" />
+    <Compile Include="Migrations\201710071241011_addrating.Designer.cs">
+      <DependentUpon>201710071241011_addrating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710071254534_addvotes2.cs" />
+    <Compile Include="Migrations\201710071254534_addvotes2.Designer.cs">
+      <DependentUpon>201710071254534_addvotes2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710071345100_adddbforvotes.cs" />
+    <Compile Include="Migrations\201710071345100_adddbforvotes.Designer.cs">
+      <DependentUpon>201710071345100_adddbforvotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710071441292_votes.cs" />
+    <Compile Include="Migrations\201710071441292_votes.Designer.cs">
+      <DependentUpon>201710071441292_votes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710071446426_deletecollection.cs" />
+    <Compile Include="Migrations\201710071446426_deletecollection.Designer.cs">
+      <DependentUpon>201710071446426_deletecollection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BlogDBContext.cs" />
@@ -214,6 +234,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\VoteLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -318,6 +339,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709261618476_addlocation.resx">
       <DependentUpon>201709261618476_addlocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710071241011_addrating.resx">
+      <DependentUpon>201710071241011_addrating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710071254534_addvotes2.resx">
+      <DependentUpon>201710071254534_addvotes2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710071345100_adddbforvotes.resx">
+      <DependentUpon>201710071345100_adddbforvotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710071441292_votes.resx">
+      <DependentUpon>201710071441292_votes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710071446426_deletecollection.resx">
+      <DependentUpon>201710071446426_deletecollection.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
