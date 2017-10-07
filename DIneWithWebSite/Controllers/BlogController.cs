@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DIneWithWebSite.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -14,11 +17,45 @@ namespace WebSite.Controllers
     {
         private BlogDBContext db = new BlogDBContext();
 
+        public Boolean isAdminUser()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = User.Identity;
+                if (user.Name.SequenceEqual("Administrator@gmail.com"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
+
         // GET: Blog
         public ActionResult Index()
         {
-         
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = User.Identity;
+                ViewBag.Name = user.Name;
+
+                ViewBag.displayAdmin = "No";
+
+                if (isAdminUser())
+                {
+                    ViewBag.displayAdmin = "Yes";
+                }
                 return View(db.Posts.ToList());
+            }
+            else
+            {
+                ViewBag.Name = "Not Logged IN";
+            }
+            
+            return View(db.Posts.ToList());
             
         }
 

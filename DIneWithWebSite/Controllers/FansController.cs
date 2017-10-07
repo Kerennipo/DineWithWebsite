@@ -14,9 +14,44 @@ namespace WebSite.Controllers
     {
         private FanDBContext db = new FanDBContext();
 
+        public Boolean isAdminUser()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = User.Identity;
+                if (user.Name.SequenceEqual("Administrator@gmail.com"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
+
         // GET: Fans
         public ActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = User.Identity;
+                ViewBag.Name = user.Name;
+
+                ViewBag.displayAdmin = "No";
+
+                if (isAdminUser())
+                {
+                    ViewBag.displayAdmin = "Yes";
+                }
+                return View(db.Fan.ToList());
+            }
+            else
+            {
+                ViewBag.Name = "Not Logged IN";
+            }
+
             return View(db.Fan.ToList());
         }
 

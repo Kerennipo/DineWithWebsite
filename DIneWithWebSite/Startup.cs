@@ -1,4 +1,6 @@
-﻿using Microsoft.Owin;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(DIneWithWebSite.Startup))]
@@ -10,5 +12,6 @@ namespace DIneWithWebSite
         {
             ConfigureAuth(app);
         }
+
     }
 }

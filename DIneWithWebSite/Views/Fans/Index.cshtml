@@ -6,10 +6,12 @@
 
 
 <h2>Fans List</h2>
-
+@if (ViewBag.displayAdmin == "Yes")
+{
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -48,9 +50,14 @@
             @Html.DisplayFor(modelItem => item.Seniority)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @if (ViewBag.displayAdmin == "Yes") {
+            @Html.ActionLink("Edit  |", "Edit", new { id = item.ID });
+            @Html.ActionLink("Details |", "Details", new { id = item.ID });
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID });
+            }
+            else{
+                @Html.ActionLink("Details |", "Details", new { id = item.ID });
+            }
         </td>
     </tr>
 }
