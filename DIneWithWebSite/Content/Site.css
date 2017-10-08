@@ -28,6 +28,11 @@ header, footer, section, aside, nav, article {
     src: url(../Fonts/destain.TTF);
 }
 
+@font-face {
+    font-family: bold-font;
+    src: url(../Fonts/calibrib.TTF);
+}
+
 body {
     margin: 0 auto;
     padding: 22px 70px;
@@ -49,7 +54,7 @@ h1, h2 {
     font-size: 45px;
     font-family: SiteTitle;
     text-shadow: 3px 3px #DDDDDD;
-    padding-left: 55px;
+    /*padding-left: 55px;*/
 }
 
 /*Adding Shadow to the Title*/
@@ -287,7 +292,7 @@ nav ul li.subscribe a {
     /*display: table-cell;*/
     width: 70%;
     padding-top: 0px;
-    padding-left: 60px;
+    margin-left: 50px;
     float: left;
     /*padding-bottom:60px;*/
     height: 100%;
@@ -360,6 +365,11 @@ aside {
     /* Column-gap not implemented yet */
     -moz-column-gap: 22px;
     /*-webkit-column-gap: 22px;*/
+    
+}
+
+#mainContentBlog {
+    margin-bottom: 25px;
 }
 
 #post-image {
@@ -592,3 +602,5 @@ td {
     width: 100%;
     box-shadow:none;
 }
+
+

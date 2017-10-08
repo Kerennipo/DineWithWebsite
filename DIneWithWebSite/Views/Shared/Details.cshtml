@@ -5,15 +5,54 @@
 }
 
 
-<div id="content">
+<div id="contentBlog">
     <div class="PostTitle">@Model.Title</div>
-    <div id="mainContent">
+    <div class="rating" style="font-family: bold-font;">
+        <!--Display the rating-->
+        @{
+            Single m_Average = 0;
+
+            Single m_totalNumberOfVotes = 0;
+            Single m_totalVoteCount = 0;
+            Single m_currentVotesCount = 0;
+            Single m_inPercent = 0;
+            var thisVote = string.Empty;
+
+            if (Model.Votes != null)
+            {
+                // calculate total votes now
+                string[] votes = Model.Votes.Split(',');
+                for (int i = 0; i < votes.Length; i++)
+                {
+                    m_currentVotesCount = int.Parse(votes[i]);
+                    m_totalNumberOfVotes = m_totalNumberOfVotes + m_currentVotesCount;
+                    m_totalVoteCount = m_totalVoteCount + (m_currentVotesCount * (i + 1));
+                }
+
+                m_Average = m_totalVoteCount / m_totalNumberOfVotes;
+                m_inPercent = (m_Average * 100) / 5;
+
+                thisVote = "<span style=\"display: block; width: 65px; height: 13px; background: url(/images/starRating.png) 0 0;\">" +
+                    "<span style=\"display: block; width: " + m_inPercent + "%; height: 13px; background: url(/images/starRating.png) 0 -13px;\"></span> " +
+                    "</span>" + "<span class=\"smallText\">Overall ratings: <span itemprop=\"ratingCount\">" + m_totalNumberOfVotes + "</span> | Rating: <span itemprop=\"ratingValue\">" + m_Average.ToString("##.##") + "</span> out of 5 </span>  ";
+            }
+        }
+        <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+            <meta itemprop="bestRating" content="5" />
+            <meta itemprop="worstRating" content="1">
+            <meta itemprop="ratingValue" content="@m_Average.ToString("##.##") %>" />
+            @Html.Raw(thisVote)
+        </div>
+    </div>
+
+    <div id="mainContentBlog">
         <section>
             <article class="blogPost">
                 <header>
-                    <div>Posted on @Model.PublishDate.ToString("dd MM yyyy") by @Model.Writer     <a href="#comments">@Model.Comments.Count Reviews</a></div>
+                    <div style="font-style:italic">Posted on @Model.PublishDate.ToString("dd MM yyyy") by @Model.Writer     <a href="#comments">@Model.Comments.Count Reviews</a></div>
                     <form metod="get" action="@Model.WebSite"><button id="visitWebsite" type="submit">Visit Website</button></form>
                     <br />
+                    
                 </header>
                             
                 <div>
@@ -205,42 +244,6 @@ else
     </script>
 }
 
-
-@{
-    Single m_Average = 0;
-
-    Single m_totalNumberOfVotes = 0;
-    Single m_totalVoteCount = 0;
-    Single m_currentVotesCount = 0;
-    Single m_inPercent = 0;
-    var thisVote = string.Empty;
-
-    if (Model.Votes!=null)
-    {
-        // calculate total votes now
-        string[] votes = Model.Votes.Split(',');
-        for (int i = 0; i < votes.Length; i++)
-        {
-            m_currentVotesCount = int.Parse(votes[i]);
-            m_totalNumberOfVotes = m_totalNumberOfVotes + m_currentVotesCount;
-            m_totalVoteCount = m_totalVoteCount + (m_currentVotesCount * (i + 1));
-        }
-
-        m_Average = m_totalVoteCount / m_totalNumberOfVotes;
-        m_inPercent = (m_Average * 100) / 5;
-
-        thisVote = "<span style=\"display: block; width: 65px; height: 13px; background: url(/images/starRating.png) 0 0;\">" +
-            "<span style=\"display: block; width: " + m_inPercent + "%; height: 13px; background: url(/images/starRating.png) 0 -13px;\"></span> " +
-            "</span>" +
-            "<span class=\"smallText\">Overall ratings: <span itemprop=\"ratingCount\">" + m_totalNumberOfVotes + "</span> | Rating: <span itemprop=\"ratingValue\">" + m_Average.ToString("##.##") + "</span> out of 5 </span>  ";
-    }
-}
-<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-    <meta itemprop="bestRating" content="5" />
-    <meta itemprop="worstRating" content="1">
-    <meta itemprop="ratingValue" content="@m_Average.ToString("##.##") %>" />
-    @Html.Raw(thisVote)
-</div>
 
 
 <p>
