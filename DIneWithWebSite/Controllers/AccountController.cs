@@ -449,7 +449,7 @@ namespace DIneWithWebSite.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Blog");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

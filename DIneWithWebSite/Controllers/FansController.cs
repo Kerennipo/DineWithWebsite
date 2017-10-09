@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using WebSite.Models;
 
 namespace WebSite.Controllers
-{
+{   [RequireHttps]
     public class FansController : Controller
     {
         private FanDBContext db = new FanDBContext();
