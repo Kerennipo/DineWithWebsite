@@ -12,7 +12,7 @@ using System.Web.Mvc;
 using WebSite.Models;
 
 namespace WebSite.Controllers
-{
+{   [RequireHttps]
     public class BlogController : Controller
     {
         private BlogDBContext db = new BlogDBContext();

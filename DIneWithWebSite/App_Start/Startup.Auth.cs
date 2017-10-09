@@ -54,9 +54,9 @@ namespace DIneWithWebSite
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+            appId: "1591022170942510",
+            appSecret: "467f10987fc63f97144e8593dce4c132");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
