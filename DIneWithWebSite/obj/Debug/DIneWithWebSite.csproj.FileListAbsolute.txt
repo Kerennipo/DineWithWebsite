@@ -378,3 +378,9 @@ C:\Users\Tal\Desktop\git repository\New folder\DineWithWebsite\DineWithWebsite\D
 C:\Users\Tal\Desktop\git repository\New folder\DineWithWebsite\DineWithWebsite\DIneWithWebSite\obj\Debug\DIneWithWebSite.csproj.CoreCompileInputs.cache
 C:\Users\Tal\Desktop\git repository\New folder\DineWithWebsite\DineWithWebsite\DIneWithWebSite\obj\Debug\DIneWithWebSite.dll
 C:\Users\Tal\Desktop\git repository\New folder\DineWithWebsite\DineWithWebsite\DIneWithWebSite\obj\Debug\DIneWithWebSite.pdb
+C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\bin\Facebook.dll
+C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\bin\Microsoft.Owin.Cors.dll
+C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\bin\System.Web.Cors.dll
+C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\bin\Facebook.xml
+C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\bin\Microsoft.Owin.Cors.xml
+C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\obj\Debug\DIneWithWebSite.Migrations.rating.resources

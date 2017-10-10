@@ -235,6 +235,10 @@
     <Compile Include="Migrations\201710071446426_deletecollection.Designer.cs">
       <DependentUpon>201710071446426_deletecollection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710091653131_rating.cs" />
+    <Compile Include="Migrations\201710091653131_rating.Designer.cs">
+      <DependentUpon>201710091653131_rating.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BlogDBContext.cs" />
@@ -363,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710071446426_deletecollection.resx">
       <DependentUpon>201710071446426_deletecollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710091653131_rating.resx">
+      <DependentUpon>201710091653131_rating.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

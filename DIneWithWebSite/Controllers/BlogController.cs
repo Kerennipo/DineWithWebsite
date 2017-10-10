@@ -90,6 +90,9 @@ namespace WebSite.Controllers
             if (ModelState.IsValid)
             {
                 post.PublishDate = DateTime.Now;
+                post.totalNumberOfVotes = 0;
+                post.totalVoteCount = 0;
+                post.Rating = 0;
                 db.Posts.Add(post);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -252,7 +255,7 @@ namespace WebSite.Controllers
                         v.UserName.Equals(User.Identity.Name, StringComparison.CurrentCultureIgnoreCase) && v.VoteForID == autoId).FirstOrDefault();
                     if (isIt != null)
                     {
-                        // keep the school voting flag to stop voting by this member
+                        // keep the restaurant voting flag to stop voting by this member
                         HttpCookie cookie = new HttpCookie(url, "true");
                         Response.Cookies.Add(cookie);
                         return Json("<br />You have already rated this post, thanks !");
@@ -261,6 +264,11 @@ namespace WebSite.Controllers
                     var sch = db.Posts.Where(sc => sc.ID == autoId).FirstOrDefault();
                     if (sch != null)
                     {
+                        //calculating the average rating of each post and saving to DB
+                        sch.totalNumberOfVotes++;
+                        sch.totalVoteCount += thisVote;
+                        sch.Rating = sch.totalVoteCount / sch.totalNumberOfVotes;
+
                         object obj = sch.Votes;
 
                         string updatedVotes = string.Empty;
@@ -315,7 +323,7 @@ namespace WebSite.Controllers
 
                         db.SaveChanges();
 
-                        // keep the school voting flag to stop voting by this member
+                        // keep the restaurant voting flag to stop voting by this member
                         HttpCookie cookie = new HttpCookie(url, "true");
                         Response.Cookies.Add(cookie);
                     }

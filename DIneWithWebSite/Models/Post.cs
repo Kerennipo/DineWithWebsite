@@ -45,6 +45,9 @@ namespace WebSite.Models
 
         //Ratings
         public string Votes { get; set; }
+        public Single Rating { get; set; }
+        public Single totalNumberOfVotes { get; set; }
+        public Single totalVoteCount { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
     }
