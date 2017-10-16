@@ -12,6 +12,8 @@ namespace WebSite.Models
             public DbSet<Comment> Comments { get; set; }
             public DbSet<Post> Posts { get; set; }
             public DbSet<VoteLog> Votes { get; set; }
+
+        public System.Data.Entity.DbSet<DIneWithWebSite.Models.CommentPost> CommentPosts { get; set; }
     }
    
 }

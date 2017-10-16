@@ -1,6 +1,7 @@
 ﻿using DIneWithWebSite.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using WebSite.Models;
 
 namespace WebSite.Controllers
@@ -153,6 +155,12 @@ namespace WebSite.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Post post = db.Posts.Find(id);
+            foreach (var item in post.Comments)
+            {
+                item.Post = db.Posts.FirstOrDefault(x => x.ID == item.RelatedPost);
+                db.Comments.Remove(db.Comments.First(y => y.ID == item.ID));
+                db.SaveChanges();
+            }
             db.Posts.Remove(post);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -161,9 +169,10 @@ namespace WebSite.Controllers
         // SET: Blog/AddComment
         public ActionResult AddComment(Comment c)
         {
-                c.Post = db.Posts.FirstOrDefault(post => post.ID == c.RelatedPost);
-                db.Comments.Add(c);
-                db.SaveChanges();
+
+            c.Post = db.Posts.FirstOrDefault(post => post.ID == c.RelatedPost);
+            db.Comments.Add(c);
+            db.SaveChanges();
 
             return RedirectToAction("Details",new {id = c.Post.ID });
             
@@ -333,6 +342,87 @@ namespace WebSite.Controllers
             }
             return Json("<br />You rated " + r + " star(s), thanks !");
         }
+
+        //Join Posts Table and Comment Table to view all posts that have revies
+        public ActionResult PostsWithReviews()
+        {
+            List<Comment> CommentList = new List<Comment>();
+            try
+            {
+                CommentList = db.Comments.ToList();
+                var NewList = CommentList.GroupJoin(db.Posts, comment => comment.RelatedPost,
+                post => post.ID,
+                (x, y) => new CommentPost(x, y.FirstOrDefault()));
+
+                List<CommentPost> List = NewList.ToList<CommentPost>();
+
+                return View(List);
+            }
+
+            catch (Exception ex)
+            {
+
+                RedirectToAction("Index", "Blog",ex);
+            }
+                return View();
+        }
+
+
+        //Return Statistics view
+        public ActionResult GroupByCuisine()
+        {
+            return View();
+        }
+
+        //Calculate Statistics for D3 + Using GroupBy
+        public ActionResult Statistics()
+        {
+               var Cuisines = db.Posts.GroupBy(x => x.Cuisine).Select(grp => new {
+                        Cuisine = grp.FirstOrDefault().Cuisine,
+                        Count = grp.Count()
+                    }).ToList();
+                ViewBag.Cuisines = JsonConvert.SerializeObject(Cuisines);
+
+                var Ratings = db.Posts.Select(x => new {
+                    Title =x.Title,
+                    Rating =x.Rating
+                }).ToList();
+                ViewBag.Ratings = JsonConvert.SerializeObject(Ratings);
+                return View();
+            
+        }
+
+        //Calculates the Relevant details for the INTRO
+        public ActionResult calcBestRating()
+        {
+            int ID = 0;
+            Single Rating=0;
+            foreach (var item in db.Posts)
+            {
+                if (item.Rating > Rating)
+                {
+                    Rating = item.Rating;
+                    ID = item.ID;
+                }
+            }
+            return RedirectToAction("Details", new { id = ID });
+        }
+
+        public String BestRatingName()
+        {
+            Single Rating = 0;
+            String Title = "";
+            foreach (var item in db.Posts)
+            {
+                if (item.Rating > Rating)
+                {
+                    Rating = item.Rating;
+                    Title = item.Title;
+                }
+            }
+            return Title;
+        }
+
 
 
     }

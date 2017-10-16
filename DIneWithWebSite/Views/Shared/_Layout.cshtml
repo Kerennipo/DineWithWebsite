@@ -13,7 +13,7 @@
     @Scripts.Render("~/Scripts/navigation-change-color.js")
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    
 </head>
 <body>
     <header>
@@ -50,8 +50,9 @@
             <h2>Restaurant of the Week</h2>
         </header>
         <!--Should be automated, is not implemented yet-->
-        <p>Shila is the winning restaurant for this week!</p>
-        <a id="websitelink" href="/Blog/Details/1">Check it Yourself!</a>
+       
+        <p>@Html.Action("BestRatingName", "Blog") is our winning Restaurant!</p>
+        <a id="websitelink" href="/Blog/calcBestRating">Check it Yourself!</a>
         <img src="~/images/food.png" alt="Shauli" />
     </section>
 
@@ -86,9 +87,8 @@
                     <h3>Categories</h3>
                 </header>
                 <ul>
-                    <li><a href="#">Lorem ipsum dolor</a></li>
-                    <li><a href="#">Sit amet consectetur</a></li>
-                    <li><a href="#">Adipisicing elit sed</a></li>
+                    <li><a href="/Blog/PostsWithReviews">All Restaurants Reviews</a></li>
+                    <li><a href="/Blog/Statistics">Statistics</a></li>
                 </ul>
             </section>
             <section>

@@ -600,4 +600,21 @@ td {
     box-shadow:none;
 }
 
+/*Statistics*/
 
+.bar {
+    fill: #aaa8a8;
+}
+
+    .bar:hover {
+        fill: #dfc0c0;
+    }
+
+
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}

@@ -399,3 +399,4 @@ C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\bin\Google.Apis.xml
 C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\bin\Google.Apis.Auth.xml
 C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\bin\Google.Apis.Core.xml
 C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\bin\Google.Apis.Gmail.v1.xml
+C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\obj\Debug\DIneWithWebSite.Migrations.changedb.resources

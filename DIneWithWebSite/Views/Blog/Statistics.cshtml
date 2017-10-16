@@ -1,0 +1,17 @@
+﻿
+<script type="text/javascript">
+    var CuisinesList = '@Html.Raw(ViewBag.Cuisines)'
+    var RatingList = '@Html.Raw(ViewBag.Ratings)'
+</script>
+<div class="Statstics">
+        <div class="g1">
+            <h2>Types of Cuisines in our Website</h2>
+        </div>
+        <div class="g2">
+            <h2>Restaurants and their Ratings</h2>
+        </div>
+    </div>
+
+
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="~/Scripts/Statistics.js"></script>

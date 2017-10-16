@@ -270,10 +270,15 @@
     <Compile Include="Migrations\201710091653131_rating.Designer.cs">
       <DependentUpon>201710091653131_rating.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710120952336_changedb.cs" />
+    <Compile Include="Migrations\201710120952336_changedb.Designer.cs">
+      <DependentUpon>201710120952336_changedb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BlogDBContext.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\CommentPost.cs" />
     <Compile Include="Models\Fan.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -289,6 +294,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\Statistics.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -302,6 +308,15 @@
     <Content Include="fonts\calibriz.ttf" />
     <Content Include="fonts\destain.otf" />
     <Content Include="fonts\destain.ttf" />
+    <Content Include="Scripts\d3.colorbrewer.js" />
+    <Content Include="Scripts\d3.v3.js" />
+    <Content Include="Scripts\d3.v3.min.js" />
+    <Content Include="Scripts\d3\d3.js" />
+    <Content Include="Scripts\d3\d3.min.js" />
+    <Content Include="Scripts\d3\README.md" />
+    <Content Include="Scripts\d3\LICENSE" />
+    <Content Include="Scripts\d3\CHANGES.md" />
+    <Content Include="Scripts\d3\API.md" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\form-submission-handler.js" />
     <Content Include="Scripts\hide-text-area.js" />
@@ -316,6 +331,8 @@
     <Content Include="Scripts\navigation-change-color.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\scalejs.visualization-d3-0.1.6.3.js" />
+    <Content Include="Scripts\scalejs.visualization-d3-0.1.6.3.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -361,6 +378,8 @@
     <Content Include="Views\Fans\Index.cshtml" />
     <Content Include="Views\Shared\Details.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Blog\PostsWithReviews.cshtml" />
+    <Content Include="Views\Blog\Statistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -402,6 +421,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710091653131_rating.resx">
       <DependentUpon>201710091653131_rating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710120952336_changedb.resx">
+      <DependentUpon>201710120952336_changedb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
