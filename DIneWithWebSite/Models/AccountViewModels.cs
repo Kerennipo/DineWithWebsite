@@ -109,4 +109,7 @@ namespace DIneWithWebSite.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+
+
 }

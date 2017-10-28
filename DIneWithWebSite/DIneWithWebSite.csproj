@@ -46,6 +46,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accord, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.3.8.0\lib\net46\Accord.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Controls, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Controls.3.8.0\lib\net46\Accord.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.MachineLearning, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.MachineLearning.3.8.0\lib\net46\Accord.MachineLearning.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Math, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Math.3.8.0\lib\net46\Accord.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Math.Core, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Math.3.8.0\lib\net46\Accord.Math.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Statistics, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Statistics.3.8.0\lib\net46\Accord.Statistics.dll</HintPath>
+    </Reference>
     <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
       <HintPath>..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
     </Reference>
@@ -172,6 +190,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="ZedGraph, Version=5.1.7.430, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZedGraph.5.1.7\lib\net35-Client\ZedGraph.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -238,41 +259,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201709261227233_InitialCreate.cs" />
-    <Compile Include="Migrations\201709261227233_InitialCreate.Designer.cs">
-      <DependentUpon>201709261227233_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201709261320287_InitialCreate.cs" />
+    <Compile Include="Migrations\201709261320287_InitialCreate.Designer.cs">
+      <DependentUpon>201709261320287_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201709261618476_addlocation.cs" />
-    <Compile Include="Migrations\201709261618476_addlocation.Designer.cs">
-      <DependentUpon>201709261618476_addlocation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710071241011_addrating.cs" />
-    <Compile Include="Migrations\201710071241011_addrating.Designer.cs">
-      <DependentUpon>201710071241011_addrating.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710071254534_addvotes2.cs" />
-    <Compile Include="Migrations\201710071254534_addvotes2.Designer.cs">
-      <DependentUpon>201710071254534_addvotes2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710071345100_adddbforvotes.cs" />
-    <Compile Include="Migrations\201710071345100_adddbforvotes.Designer.cs">
-      <DependentUpon>201710071345100_adddbforvotes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710071441292_votes.cs" />
-    <Compile Include="Migrations\201710071441292_votes.Designer.cs">
-      <DependentUpon>201710071441292_votes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710071446426_deletecollection.cs" />
-    <Compile Include="Migrations\201710071446426_deletecollection.Designer.cs">
-      <DependentUpon>201710071446426_deletecollection.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710091653131_rating.cs" />
-    <Compile Include="Migrations\201710091653131_rating.Designer.cs">
-      <DependentUpon>201710091653131_rating.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710120952336_changedb.cs" />
-    <Compile Include="Migrations\201710120952336_changedb.Designer.cs">
-      <DependentUpon>201710120952336_changedb.cs</DependentUpon>
+    <Compile Include="Migrations\201710281801474_svmdetails.cs" />
+    <Compile Include="Migrations\201710281801474_svmdetails.Designer.cs">
+      <DependentUpon>201710281801474_svmdetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -294,6 +287,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="License-LGPL.txt" />
     <Content Include="Scripts\Statistics.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -398,32 +392,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709261227233_InitialCreate.resx">
-      <DependentUpon>201709261227233_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709261320287_InitialCreate.resx">
+      <DependentUpon>201709261320287_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709261618476_addlocation.resx">
-      <DependentUpon>201709261618476_addlocation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710071241011_addrating.resx">
-      <DependentUpon>201710071241011_addrating.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710071254534_addvotes2.resx">
-      <DependentUpon>201710071254534_addvotes2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710071345100_adddbforvotes.resx">
-      <DependentUpon>201710071345100_adddbforvotes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710071441292_votes.resx">
-      <DependentUpon>201710071441292_votes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710071446426_deletecollection.resx">
-      <DependentUpon>201710071446426_deletecollection.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710091653131_rating.resx">
-      <DependentUpon>201710091653131_rating.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710120952336_changedb.resx">
-      <DependentUpon>201710120952336_changedb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710281801474_svmdetails.resx">
+      <DependentUpon>201710281801474_svmdetails.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -460,7 +433,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Accord.3.8.0\build\Accord.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Accord.3.8.0\build\Accord.targets'))" />
   </Target>
+  <Import Project="..\packages\Accord.3.8.0\build\Accord.targets" Condition="Exists('..\packages\Accord.3.8.0\build\Accord.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

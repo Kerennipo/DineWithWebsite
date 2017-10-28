@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -17,8 +18,9 @@
 </head>
 <body>
     <header>
+     
         @Html.Partial("_LoginPartial")  
-
+        
 
         <h1 class="BlogTitle">DineWith <img id="titleImage" src="~/images/logo.png" width="60" height="60"></h1>
 
@@ -138,6 +140,44 @@
             </section>
         </div>
     </footer>
+
+
+    <!--Get Profile from facebook-->
+    <script>
+
+        //Init facebook functionality by using FB.init() with parameters
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: 273502729522472, // App ID
+                channelUrl: '//' + document.domain + '/fbchannel.html', // Channel File
+                status: true, // check login status
+                cookie: true, // enable cookies to allow the server to access the session
+                xfbml: true  // parse XFBML
+            });
+        };
+
+        // Self-invoking anonymous function that loads facebook SDK
+        (function (d) {
+            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement('script'); js.id = id; js.async = true;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            ref.parentNode.insertBefore(js, ref);
+        })(document);
+
+        function setFacebookPhoto(response) {
+
+            if (response.status === 'connected') {
+                FB.api('/me/?fields=picture', function (response) {
+                    $("#hf-facebook-profile-img-url").val(response.picture.data.url);
+                    $("#user-photo").attr('src', response.picture.data.url).show();
+                });
+            }
+        }
+
+    </script>
+
+
 </body>
         @RenderSection("scripts", required: false)
 

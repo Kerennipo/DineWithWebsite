@@ -29,6 +29,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Seniority)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsVegeterian)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FanOfWinning)
+        </th>
         <th></th>
     </tr>
 
@@ -49,6 +55,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Seniority)
         </td>
+        <th>
+            @Html.DisplayFor(model => item.IsVegeterian)
+        </th>
+        <th>
+            @Html.DisplayFor(model => item.FanOfWinning)
+        </th>
         <td>
             @if (ViewBag.displayAdmin == "Yes") {
             @Html.ActionLink("Edit  |", "Edit", new { id = item.ID });

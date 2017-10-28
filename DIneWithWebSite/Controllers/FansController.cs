@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Accord.MachineLearning.VectorMachines.Learning;
+using Accord.Math.Optimization.Losses;
+using Accord.Statistics.Kernels;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -13,6 +17,8 @@ namespace WebSite.Controllers
     public class FansController : Controller
     {
         private FanDBContext db = new FanDBContext();
+        static List<double[]> inputsTraining = new List<double[]>();
+        static List<int> outputsTraining = new List<int>();
 
         public Boolean isAdminUser()
         {
@@ -81,10 +87,19 @@ namespace WebSite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Gender,BDay,Seniority")] Fan fan)
+        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Gender,BDay,Seniority,IsVegeterian")] Fan fan)
         {
             if (ModelState.IsValid)
             {
+                if (inputsTraining.Count==0&&outputsTraining.Count==0)
+                {
+                    inisializeSVM();
+                }
+                double[] vector=FanToVector(fan);
+                fan.FanOfWinning = SVM(vector);
+                inputsTraining.Add(vector);
+                outputsTraining.Add(System.Convert.ToInt32(fan.FanOfWinning));
+                
                 db.Fan.Add(fan);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -157,6 +172,44 @@ namespace WebSite.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        //Random inisialize for SVM algorithm use (if DB is empty)
+        private void inisializeSVM()
+        {
+            Random random = new Random();
+            for (int i = 0; i < 4; i++)
+            {
+                inputsTraining.Add(new double[] { random.Next(0,2), random.Next(0,2) });
+                outputsTraining.Add(random.Next(0,2));
+            }
+        }
+
+        //SVM algorithm to check if a Fan loved the winning restaurant or not
+        private bool SVM(double[] vector)
+        {
+            // Create the learning algorithm with the chosen kernel
+            var smo = new SequentialMinimalOptimization<Gaussian>()
+            {
+                Complexity = 100 // Create a hard-margin SVM 
+            };
+
+            // Use the algorithm to learn the svm
+            var svm = smo.Learn(inputsTraining.ToArray(), outputsTraining.ToArray());
+
+            // Compute the machine's answers for the given inputs
+            bool prediction = svm.Decide(vector);
+
+            return prediction;
+        }
+
+        private double[] FanToVector(Fan fan)
+        {
+            if (fan.Gender.Equals("Female"))
+            { 
+                return new double[] {1,System.Convert.ToDouble(fan.IsVegeterian)};
+            }
+            return new double[] {0,System.Convert.ToDouble(fan.IsVegeterian)};
         }
     }
 }

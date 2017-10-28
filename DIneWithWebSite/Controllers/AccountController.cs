@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DIneWithWebSite.Models;
+using Facebook;
 
 namespace DIneWithWebSite.Controllers
 {
@@ -377,8 +378,11 @@ namespace DIneWithWebSite.Controllers
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         return RedirectToLocal(returnUrl);
                     }
+      
                 }
                 AddErrors(result);
+
+              
             }
 
             ViewBag.ReturnUrl = returnUrl;
@@ -482,4 +486,6 @@ namespace DIneWithWebSite.Controllers
         }
         #endregion
     }
+
+
 }
