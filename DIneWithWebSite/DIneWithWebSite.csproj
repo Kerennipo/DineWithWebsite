@@ -272,6 +272,7 @@
     <Compile Include="Models\BlogDBContext.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\CommentPost.cs" />
+    <Compile Include="Models\FaceBookUser.cs" />
     <Compile Include="Models\Fan.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DIneWithWebSite.Models;
 using Facebook;
+using System.Security.Principal;
 
 namespace DIneWithWebSite.Controllers
 {
@@ -18,6 +19,8 @@ namespace DIneWithWebSite.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        static FaceBookUser facebookuser= new FaceBookUser();
+
 
         public AccountController()
         {
@@ -289,6 +292,7 @@ namespace DIneWithWebSite.Controllers
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
             var userId = await SignInManager.GetVerifiedUserIdAsync();
+            
             if (userId == null)
             {
                 return View("Error");
@@ -329,6 +333,9 @@ namespace DIneWithWebSite.Controllers
                 return RedirectToAction("Login");
             }
 
+            facebookuser.FacebookId = loginInfo.Login.ProviderKey;
+            facebookuser.Name = loginInfo.ExternalIdentity.Name;
+
             // Sign in the user with this external login provider if the user already has a login
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
             switch (result)
@@ -346,6 +353,33 @@ namespace DIneWithWebSite.Controllers
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
                     return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
             }
+        }
+
+        //Get Facebook Details
+        public string GetFacebookID()
+        {
+            if(facebookuser.FacebookId == null)
+            {
+                return "";
+            }
+            if (!facebookuser.FacebookId.Equals(""))
+            {
+                return facebookuser.FacebookId;
+            }
+            return "";
+        }
+
+        public string GetFacebookName()
+        {
+            if (facebookuser.Name == null)
+            {
+                return "";
+            }
+            if (!facebookuser.Name.Equals(""))
+            {
+                return facebookuser.Name;
+            }
+            return "";
         }
 
         //
@@ -396,6 +430,8 @@ namespace DIneWithWebSite.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            facebookuser.FacebookId = "";
+            facebookuser.Name = "";
             return RedirectToAction("Index", "Blog");
         }
 
@@ -449,6 +485,7 @@ namespace DIneWithWebSite.Controllers
 
         private ActionResult RedirectToLocal(string returnUrl)
         {
+           
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
@@ -484,8 +521,11 @@ namespace DIneWithWebSite.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
+
         #endregion
     }
 
+   
+   
 
 }

@@ -19,11 +19,23 @@
 <body>
     <header>
      
-        @Html.Partial("_LoginPartial")  
+        @Html.Partial("_LoginPartial")
         
+        @if (User.Identity.IsAuthenticated)
+        {
+            var facebookid = @Html.Action("GetFacebookID", "Account");
+            var facebookname = @Html.Action("GetFacebookName", "Account");
+
+            if (!@facebookid.Equals(""))
+                <img src="http://graph.facebook.com/@facebookid/picture?type=square" />
+
+            if (!@facebookname.Equals(""))
+            {
+                <p style="font:bold">@facebookname</p>
+            }
+        }
 
         <h1 class="BlogTitle">DineWith <img id="titleImage" src="~/images/logo.png" width="60" height="60"></h1>
-
     </header>
 
     <!-- Navigation -->
