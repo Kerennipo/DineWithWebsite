@@ -155,6 +155,7 @@ namespace WebSite.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Post post = db.Posts.Find(id);
+           
             foreach (var item in post.Comments)
             {
                 item.Post = db.Posts.FirstOrDefault(x => x.ID == item.RelatedPost);

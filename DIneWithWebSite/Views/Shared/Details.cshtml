@@ -43,7 +43,7 @@
                             
                 <div>
                     @Model.Content
-                    <h2>Cuisine</h2>
+                    <h2> Main Cuisine</h2>
                     <div>@Model.Cuisine</div>
                     <h2>Meals</h2>
                     <div>@Model.Meals</div>
@@ -161,7 +161,7 @@
                             {
                                 <img id="post-image" src="@Model.Image" width="500" height="300" />
                             }
-                            @if (Model.Video != null)
+                            @if (Model.Video != null&&Model.Video!="")
                             {
                                 <video controls="controls">
                                     <source src="@Model.Video" type="video/mp4" />
