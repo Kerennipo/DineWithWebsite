@@ -421,3 +421,4 @@ C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\bin\zh-tw\ZedGraph.resources
 C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\obj\Debug\DIneWithWebSite.Migrations.InitialCreate.resources
 C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\obj\Debug\DIneWithWebSite.csproj.GenerateResource.Cache
 C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\obj\Debug\DIneWithWebSite.Migrations.svmdetails.resources
+C:\Users\Keren\source\repos\WebSite\DIneWithWebSite\obj\Debug\DIneWithWebSite.Migrations.checkdelete.resources

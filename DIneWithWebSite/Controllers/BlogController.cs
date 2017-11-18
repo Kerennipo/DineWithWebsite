@@ -155,9 +155,11 @@ namespace WebSite.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Post post = db.Posts.Find(id);
-           
-            foreach (var item in post.Comments)
+            int numofreviews = post.Comments.Count;
+
+            for (int i = 0; i < numofreviews; i++)
             {
+                var item = post.Comments.Last();
                 item.Post = db.Posts.FirstOrDefault(x => x.ID == item.RelatedPost);
                 db.Comments.Remove(db.Comments.First(y => y.ID == item.ID));
                 db.SaveChanges();

@@ -267,6 +267,10 @@
     <Compile Include="Migrations\201710281801474_svmdetails.Designer.cs">
       <DependentUpon>201710281801474_svmdetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711171618396_checkdelete.cs" />
+    <Compile Include="Migrations\201711171618396_checkdelete.Designer.cs">
+      <DependentUpon>201711171618396_checkdelete.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BlogDBContext.cs" />
@@ -398,6 +402,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710281801474_svmdetails.resx">
       <DependentUpon>201710281801474_svmdetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711171618396_checkdelete.resx">
+      <DependentUpon>201711171618396_checkdelete.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
